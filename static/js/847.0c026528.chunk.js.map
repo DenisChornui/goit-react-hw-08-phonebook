@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/847.0c026528.chunk.js","mappings":"iMAAaA,EAAW,WACpB,OACI,uCAEP,C","sources":["pages/Contacts.js"],"sourcesContent":["export const Contacts = () => {\n    return (\n        <p>ContactsPage</p>\n    )\n}"],"names":["Contacts"],"sourceRoot":""}
