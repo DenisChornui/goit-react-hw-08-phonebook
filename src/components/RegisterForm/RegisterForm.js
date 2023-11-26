@@ -1,7 +1,11 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { register } from 'redux/auth/operations';
 
 export const RegisterForm = () => {
+  const dispatch = useDispatch()
+
   return (
     <Formik
       initialValues={{
@@ -10,6 +14,7 @@ export const RegisterForm = () => {
         password: '',
       }}
       onSubmit={(values, actions) => {
+        dispatch(register(values))
         actions.resetForm();
       }}
     >
