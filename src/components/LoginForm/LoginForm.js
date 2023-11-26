@@ -18,7 +18,7 @@ export const LoginForm = () => {
       >
         <Form autoComplete="off">
           <div>
-            <h2>Log In</h2>
+            <h2>Login</h2>
             <label htmlFor="email">
               Email
               <Field type="email" id="email" name="email" />

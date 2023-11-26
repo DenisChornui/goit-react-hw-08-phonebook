@@ -8,8 +8,8 @@ import {
   StyledForm,
   StyledLabel,
 } from './ContactForm.styled';
-import { selectContacts } from 'redux/selectors';
-import { addContact } from 'redux/operations';
+import { selectContacts } from 'redux/contacts/selectors';
+import { addContact } from 'redux/contacts/operations';
 
 const contactFormSchema = Yup.object().shape({
   name: Yup.string().required('This field is required!'),
