@@ -1,5 +1,5 @@
-import { ErrorMessage, Field, Formik } from 'formik';
-import { Form, Link } from 'react-router-dom';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { Link } from 'react-router-dom';
 
 export const RegisterForm = () => {
   return (
