@@ -1,7 +1,14 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, ErrorMessage } from 'formik';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { logIn } from 'redux/auth/operations';
+import {
+  Container,
+  Input,
+  Label,
+  Link,
+  StyledBtn,
+  TextContainer,
+} from './LoginForm.styled';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
@@ -18,26 +25,26 @@ export const LoginForm = () => {
       }}
     >
       <Form autoComplete="off">
-        <div>
+        <Container>
           <h2>Login</h2>
-          <label htmlFor="email">
+          <Label htmlFor="email">
             Email
-            <Field type="email" id="email" name="email" />
+            <Input type="email" id="email" name="email" />
             <ErrorMessage component="div" name="email" />
-          </label>
+          </Label>
 
-          <label htmlFor="password">
+          <Label htmlFor="password">
             Password
-            <Field type="password" id="password" name="password" />
+            <Input type="password" id="password" name="password" />
             <ErrorMessage component="div" name="password" />
-          </label>
+          </Label>
 
-          <button type="submit">Log In</button>
-          <div>
+          <StyledBtn type="submit">Log In</StyledBtn>
+          <TextContainer>
             <p>Do not have an account?</p>
             <Link to="/register">Register</Link>
-          </div>
-        </div>
+          </TextContainer>
+        </Container>
       </Form>
     </Formik>
   );

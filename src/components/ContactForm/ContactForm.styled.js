@@ -1,21 +1,60 @@
+import { Field } from 'formik';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import { Form, Field, ErrorMessage } from 'formik';
 
-export const StyledForm = styled(Form)`
+export const ContainerForm = styled.div`
   display: flex;
   flex-direction: column;
-  row-gap: 20px;
-  max-width: 250px;
-  margin-bottom: 30px;
-  font-weight: 300;
-  margin-right: auto;
   margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  width: 600px;
+  color: white;
+  padding: 20px;
+  gap: 15px;
+  box-shadow: 4px 4px 23px 12px rgba(0, 7, 236, 0.35);
 `;
-export const StyledLabel = styled.label`
+
+export const Link = styled(NavLink)`
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  &:first-child {
+    margin-right: 50px;
+  }
+
+  &:hover {
+    color: #76c70f;
+  }
+`;
+
+export const Input = styled(Field)`
+  padding: 8px 12px;
+  font-size: 20px;
+  border: 2px solid white;
+  cursor: pointer;
+  border-radius: 10px;
+  outline: none;
+  background-color: transparent;
+  color: white;
+  width: 300px;
+
+  &:hover,
+  &:focus {
+    box-shadow: 4px 4px 23px 12px rgba(0, 7, 236, 0.35);
+  }
+`;
+export const Label = styled.label`
   display: flex;
   flex-direction: column;
-  row-gap: 5px;
-  font-weight: 400;
+
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
 `;
 
 export const StyledBtn = styled.button`
@@ -33,17 +72,8 @@ export const StyledBtn = styled.button`
   &:hover {
     background-color: blue;
   }
-`;
-
-export const StyledField = styled(Field)`
-  border: 0.1px solid lightgray;
-  font-size: 18px;
+  &:hover,
   &:focus {
-    outline: none;
-    box-shadow: 0px 0px 3px 2px lightblue;
+    box-shadow: 4px 4px 23px 12px rgba(0, 7, 236, 0.35);
   }
-`;
-
-export const StyledErrMessage = styled(ErrorMessage)`
-  color: red;
 `;

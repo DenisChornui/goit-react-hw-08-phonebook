@@ -42,7 +42,6 @@ export const Input = styled(Field)`
   background-color: transparent;
   color: white;
   width: 300px;
-
   &:hover,
   &:focus {
     box-shadow: 4px 4px 23px 12px rgba(0, 7, 236, 0.35);

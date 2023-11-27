@@ -1,4 +1,4 @@
-import { StyledList, StyledBtn } from './ContactList.styled';
+import { StyledList, StyledBtn, Item } from './ContactList.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectError,
@@ -25,7 +25,7 @@ export const ContactList = () => {
       {contactsFilter.map(contact => {
         const { id, name, number } = contact;
         return (
-          <li key={id}>
+          <Item key={id}>
             {name}: {number}
             <StyledBtn
               type="button"
@@ -33,7 +33,7 @@ export const ContactList = () => {
             >
               Delete
             </StyledBtn>
-          </li>
+          </Item>
         );
       })}
     </StyledList>

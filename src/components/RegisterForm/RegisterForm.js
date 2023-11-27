@@ -1,10 +1,17 @@
-import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { ErrorMessage, Form, Formik } from 'formik';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { register } from 'redux/auth/operations';
+import {
+  Container,
+  Input,
+  Label,
+  Link,
+  StyledBtn,
+  TextContainer,
+} from './RegisterForm.styled';
 
 export const RegisterForm = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   return (
     <Formik
@@ -14,38 +21,38 @@ export const RegisterForm = () => {
         password: '',
       }}
       onSubmit={(values, actions) => {
-        dispatch(register(values))
+        dispatch(register(values));
         actions.resetForm();
       }}
     >
       <Form autoComplete="off">
-        <div>
+        <Container>
           <h2>Register</h2>
 
-          <label htmlFor="name">
+          <Label htmlFor="name">
             Username
-            <Field type="text" id="name" name="name" />
+            <Input type="text" id="name" name="name" />
             <ErrorMessage component="div" name="name" />
-          </label>
+          </Label>
 
-          <label htmlFor="email">
+          <Label htmlFor="email">
             Email
-            <Field type="email" id="email" name="email" />
+            <Input type="email" id="email" name="email" />
             <ErrorMessage component="div" name="email" />
-          </label>
+          </Label>
 
-          <label htmlFor="password">
+          <Label htmlFor="password">
             Password
-            <Field type="password" id="password" name="password" />
+            <Input type="password" id="password" name="password" />
             <ErrorMessage component="div" name="password" />
-          </label>
+          </Label>
 
-          <button type="submit">Register</button>
-          <div>
+          <StyledBtn type="submit">Register</StyledBtn>
+          <TextContainer>
             <p>Have an account?</p>
             <Link to="/login">Login</Link>
-          </div>
-        </div>
+          </TextContainer>
+        </Container>
       </Form>
     </Formik>
   );

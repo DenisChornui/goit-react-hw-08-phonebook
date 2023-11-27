@@ -1,13 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { Formik } from 'formik';
+import { ErrorMessage, Form, Formik } from 'formik';
 import * as Yup from 'yup';
-import {
-  StyledBtn,
-  StyledErrMessage,
-  StyledField,
-  StyledForm,
-  StyledLabel,
-} from './ContactForm.styled';
+import { ContainerForm, Input, Label, StyledBtn } from './ContactForm.styled';
 import { selectContacts } from 'redux/contacts/selectors';
 import { addContact } from 'redux/contacts/operations';
 
@@ -41,20 +35,23 @@ export const ContactForm = () => {
         actions.resetForm();
       }}
     >
-      <StyledForm>
-        <StyledLabel>
-          Name
-          <StyledField name="name" />
-          <StyledErrMessage name="name" component="div" />
-        </StyledLabel>
-        <StyledLabel>
-          Number
-          <StyledField type="tel" name="number" required />
-          <StyledErrMessage name="number" component="div" />
-        </StyledLabel>
+      <Form>
+        <ContainerForm>
+          <h1>Phonebook</h1>
+          <Label>
+            Name
+            <Input name="name" />
+            <ErrorMessage name="name" component="div" />
+          </Label>
+          <Label>
+            Number
+            <Input type="tel" name="number" required />
+            <ErrorMessage name="number" component="div" />
+          </Label>
 
-        <StyledBtn type="submit">Add contact</StyledBtn>
-      </StyledForm>
+          <StyledBtn type="submit">Add contact</StyledBtn>
+        </ContainerForm>
+      </Form>
     </Formik>
   );
 };

@@ -1,14 +1,12 @@
 import styled from 'styled-components';
 
-export const StyledList = styled.ul`
+export const Container = styled.div`
   display: flex;
-  flex-direction: column;
-  row-gap: 15px;
-  width: 300px;
+  gap: 20px;
 `;
 
-export const StyledBtn = styled.button`
-  padding: 5px;
+export const Btn = styled.button`
+  padding: 10px;
   min-width: 100px;
   min-height: 40px;
   border: 1px solid black;
@@ -26,11 +24,4 @@ export const StyledBtn = styled.button`
   &:focus {
     box-shadow: 4px 4px 23px 12px rgba(0, 7, 236, 0.35);
   }
-`;
-
-export const Item = styled.li`
-  font-size: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 `;
