@@ -3,35 +3,53 @@
 // import { Filter } from './Filter/Filter';
 // import { Container } from './App.styled';
 import { Route, Routes } from 'react-router-dom';
-import { lazy } from 'react';
+import { lazy, useEffect } from 'react';
 import { Layout } from './Layout';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectIsRefreshing } from 'redux/auth/selectors';
+import { refreshUser } from 'redux/auth/operations';
+import { PrivateRoute } from './PrivateRoute';
+import { RestrictedRoute } from './RestrictedRoute';
 
 const RegisterPage = lazy(() => import('../pages/Register'));
 const LoginPage = lazy(() => import('../pages/Login'));
 const ContactsPage = lazy(() => import('../pages/Contacts'));
-const HomePage = lazy(() => import('../pages/Home'));
 
 export const App = () => {
-  return (
-    <>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />} />
-          {/* <Route path="contacts" component={<ContactsPage />} /> */}
-          <Route path="login" element={<LoginPage />} />
-          <Route path="register" element={<RegisterPage />} />
-          <Route path="contacts" element={<ContactsPage />} />
-        </Route>
-      </Routes>
-    </>
+  const dispatch = useDispatch();
+  const isRefreshing = useSelector(selectIsRefreshing);
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
+  return isRefreshing ? (
+    <h2>Refreshing user...</h2>
+  ) : (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route
+          path="register"
+          element={
+            <RestrictedRoute
+              redirectTo="/contacts"
+              component={<RegisterPage />}
+            />
+          }
+        ></Route>
+        <Route
+          path="login"
+          element={
+            <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
+          }
+        ></Route>
+        <Route
+          path="contacts"
+          element={
+            <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
+          }
+        ></Route>
+      </Route>
+    </Routes>
   );
 };
-
-
-// <Container>
-    //   <h2>Phonebook</h2>
-    //   <ContactForm />
-    //   <h2>Contacts</h2>
-    //   <Filter />
-    //   <ContactList />
-    // </Container>
